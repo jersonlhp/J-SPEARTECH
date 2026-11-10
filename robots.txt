@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://whitesmoke-bat-457021.hostingersite.com/sitemap.xml
