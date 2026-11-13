@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contrato J&amp;S Pear Tech</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f4f6f8;--card:#fff;--tx:#1b2733;--mut:#5b6b7a;--hd:#17365d;--bd:#d5dde5;--ac:#12915f;--acx:#fff;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10161d;--card:#18212b;--tx:#e6ebf0;--mut:#98a6b3;--hd:#8db8f0;--bd:#2c3a48;--ac:#1fb97c;--acx:#06251a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10161d;--card:#18212b;--tx:#e6ebf0;--mut:#98a6b3;--hd:#8db8f0;--bd:#2c3a48;--ac:#1fb97c;--acx:#06251a;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+main{max-width:820px;margin:0 auto;padding:20px 16px 60px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;margin-bottom:16px}
+h1{color:var(--hd);text-align:center;margin:8px 0 2px;font-size:1.6rem}
+.sub{text-align:center;color:var(--mut);font-size:.8rem;letter-spacing:.04em;margin-bottom:16px}
+h2{color:var(--hd);font-size:1rem;margin:0 0 8px;text-transform:uppercase}
+p{margin:0 0 8px}
+label{display:block;font-size:.8rem;color:var(--mut);margin:8px 0 2px}
+input,select,textarea{width:100%;padding:9px 10px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);font:inherit}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 12px}
+button{font:inherit;cursor:pointer;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:9px 14px}
+.pix{width:100%;background:var(--ac);color:var(--acx);border:0;font-weight:700;padding:15px;font-size:1rem}
+#pixbox{display:none;margin-top:14px;gap:16px;align-items:center;flex-wrap:wrap}
+#qr{background:#fff;padding:8px;border-radius:8px;line-height:0}
+#code{font-size:.75rem;word-break:break-all;height:96px}
+.note{font-size:.8rem;color:var(--mut)}
+.sig{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+canvas{width:100%;height:150px;border:1px dashed var(--mut);border-radius:8px;background:#fff;touch-action:none;display:block}
+.row{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.ok{background:var(--ac);color:var(--acx);border:0;font-weight:600}
+.log{font-size:.78rem;color:var(--mut);margin-top:8px;word-break:break-all}
+@media print{body{background:#fff}.noprint{display:none!important}.card{border:0;padding:6px 0}}
+</style>
+</head>
+<body>
+<main>
+<h1>CONTRATO DE PRESTAÇÃO DE SERVIÇOS</h1>
+<div class="sub">CRIAÇÃO DE SITES E SERVIÇOS DIGITAIS • PIX • ASSINATURA DIGITAL</div>
+
+<section class="card"><h2>Identificação das partes</h2>
+<p><b>CONTRATADA:</b> J&amp;S Pear Tech, Av. Filinto Müller, 3021, Três Lagoas/MS.</p>
+<label>CNPJ/CPF da contratada</label><input id="cnpj">
+<p style="margin-top:12px"><b>CONTRATANTE</b></p>
+<div class="g"><div><label>Nome/Razão social</label><input id="cnome"></div><div><label>CPF/CNPJ</label><input id="cdoc"></div><div><label>Telefone/WhatsApp</label><input id="ctel" type="tel"></div></div>
+<label>Endereço</label><input id="cend"></section>
+
+<section class="card"><h2>Cláusula 1 — Objeto</h2><p>Prestação de serviços de criação, desenvolvimento, configuração, manutenção ou atualização de sites e outros serviços digitais, conforme o escopo descrito neste contrato e/ou proposta comercial aprovada pelas partes.</p></section>
+
+<section class="card"><h2>Cláusula 2 — Escopo, entregáveis e prazo</h2>
+<label>Serviço contratado</label><input id="serv">
+<label>Descrição, páginas, funcionalidades e integrações</label><textarea id="desc" rows="3"></textarea>
+<label>Prazo estimado</label><input id="prazo" type="date" style="max-width:220px">
+<p class="note" style="margin-top:8px">O prazo começa após a assinatura, o pagamento inicial acordado e o recebimento dos materiais e informações necessários. Alterações fora do escopo poderão exigir novo orçamento e prazo.</p></section>
+
+<section class="card"><h2>Cláusula 3 — Preço e pagamento via PIX</h2>
+<div class="g"><div><label>Valor total (R$)</label><input id="valor" inputmode="decimal" placeholder="0,00"></div>
+<div><label>Condição</label><select id="cond"><option>À vista</option><option>Entrada + saldo</option><option>Parcelado conforme acordo escrito</option></select></div>
+<div><label>Entrada (R$)</label><input id="ent" inputmode="decimal"></div>
+<div><label>Vencimento</label><input id="venc" type="date"></div></div>
+<label>Saldo/parcelas</label><input id="saldo">
+<p style="margin-top:12px"><b>Chave PIX:</b> (11) 97236-9419 &nbsp; <b>Favorecido:</b> J&amp;S Pear Tech</p>
+<label>Valor a pagar agora no PIX (R$) — opcional; se vazio, o valor é digitado no banco</label>
+<input id="pagar" inputmode="decimal" placeholder="Ex.: 500,00">
+<button class="pix noprint" id="pixbtn" style="margin-top:12px">PAGAR VIA PIX — copiar código e mostrar QR</button>
+<div id="pixbox" class="noprint"><div id="qr"></div>
+<div style="flex:1;min-width:220px"><label>PIX copia e cola</label><textarea id="code" readonly></textarea>
+<div class="row"><button id="cp" class="ok">Copiar código</button></div>
+<p class="note" style="margin-top:8px" id="cpmsg">Abra o app do banco → PIX → Copia e Cola (ou ler QR Code). Confira o favorecido <b>J&amp;S Pear Tech</b> antes de confirmar.</p></div></div>
+<p class="note" style="margin-top:10px">O pagamento só é considerado realizado após confirmação do crédito; comprovante de agendamento não comprova liquidação.</p></section>
+
+<section class="card"><h2>Cláusula 4 — Obrigações da contratada</h2><p>Executar os serviços conforme o escopo aprovado, manter comunicação razoável, informar impedimentos relevantes e entregar os itens acordados após o cumprimento das condições previstas. Hospedagem, domínio, licenças, serviços de terceiros, manutenção contínua e suporte só estarão incluídos se constarem expressamente da proposta.</p>
+<h2 style="margin-top:14px">Cláusula 5 — Obrigações do contratante</h2><p>Fornecer informações, textos, imagens, logotipos, acessos e aprovações necessários; garantir autorização para usar os materiais fornecidos; revisar o resultado; pagar os valores acordados; e proteger credenciais e contas recebidas.</p></section>
+
+<section class="card"><h2>Cláusula 6 — Aprovação, alterações e entrega</h2>
+<div class="g"><div><label>Entrega por</label><select id="entrega"><option>Publicação em hospedagem</option><option>Arquivos do projeto</option><option>Outro</option></select></div><div><label>Rodadas de ajustes incluídas</label><input id="rod" type="number" min="0"></div></div>
+<p style="margin-top:8px">Novas funcionalidades, mudanças substanciais ou pedidos fora do escopo serão orçados à parte. Aprovações e solicitações poderão ser registradas por escrito, inclusive por e-mail ou WhatsApp.</p></section>
+
+<section class="card">
+<h2>Cláusula 7 — Propriedade intelectual e licenças</h2><p>Após o pagamento integral, os direitos de uso dos materiais desenvolvidos especificamente para o CONTRATANTE serão transferidos ou licenciados conforme a proposta aprovada e a legislação aplicável. Ferramentas, bibliotecas, modelos, fontes, plugins e serviços de terceiros seguem suas próprias licenças.</p>
+<h2>Cláusula 8 — Hospedagem e serviços recorrentes</h2><p>Quando não incluídos expressamente, domínio, hospedagem, e-mail, licenças, manutenção e suporte recorrente serão contratados e pagos à parte. Custos de terceiros deverão ser informados e aprovados antes da contratação, quando aplicável.</p>
+<h2>Cláusula 9 — Cancelamento e inadimplemento</h2><p>Em caso de cancelamento, serão apurados serviços executados, despesas autorizadas e valores pagos, observada a legislação aplicável. Atrasos poderão suspender o trabalho e alterar o prazo após aviso. Permanecem preservados os direitos obrigatórios previstos em lei, inclusive os aplicáveis às relações de consumo.</p>
+<h2>Cláusula 10 — Dados e confidencialidade</h2><p>As partes usarão dados pessoais para finalidades relacionadas à execução do contrato, adotarão medidas razoáveis de segurança e não divulgarão informações confidenciais sem autorização, salvo obrigação legal.</p>
+<h2>Cláusula 11 — Vigência e divergências</h2><p>O contrato vigora a partir da assinatura até o cumprimento das obrigações. As partes buscarão resolver divergências por negociação, sem afastar o direito de recorrer aos órgãos competentes e ao foro legalmente aplicável.</p></section>
+
+<section class="card"><h2>Dados do projeto e observações</h2><textarea id="obs" rows="3"></textarea></section>
+
+<section class="card"><h2>Cláusula 12 — Assinatura eletrônica/digital</h2>
+<p>As partes poderão assinar eletronicamente por plataforma de assinatura, certificado digital ou outro meio eletrônico que permita identificar o signatário e demonstrar sua manifestação de vontade, observada a legislação aplicável. A assinatura desenhada nesta página, isoladamente, pode não equivaler a uma assinatura com certificado digital (ICP-Brasil) ou a uma validação independente.</p></section>
+
+<section class="card"><h2>Assinaturas</h2>
+<div class="sig">
+<div><b>CONTRATADA — J&amp;S Pear Tech</b><label>Representante</label><input id="n1"><label>Assine abaixo</label><canvas id="c1"></canvas>
+<div class="row noprint"><button data-clear="1">Limpar</button><button class="ok" data-sign="1">Assinar</button></div><div class="log" id="l1"></div></div>
+<div><b>CONTRATANTE</b><label>Nome</label><input id="n2"><label>Assine abaixo</label><canvas id="c2"></canvas>
+<div class="row noprint"><button data-clear="2">Limpar</button><button class="ok" data-sign="2">Assinar</button></div><div class="log" id="l2"></div></div>
+</div>
+<div class="row noprint" style="margin-top:16px"><button id="print">Imprimir / salvar em PDF</button></div>
+<p class="note" style="margin-top:10px">Modelo-base para revisão antes da assinatura. Confira os dados da empresa e considere revisão jurídica antes de usar.</p></section>
+</main>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+function crc16(s){var c=0xFFFF;for(var i=0;i<s.length;i++){c^=s.charCodeAt(i)<<8;for(var j=0;j<8;j++)c=(c&0x8000)?((c<<1)^0x1021):(c<<1);c&=0xFFFF}return c.toString(16).toUpperCase().padStart(4,"0")}
+function f(id,v){return id+String(v.length).padStart(2,"0")+v}
+function num(v){var n=parseFloat(String(v).replace(/\./g,"").replace(",","."));return isNaN(n)?0:n}
+function payload(amount){
+  var p=f("00","01")+f("01","11")+f("26",f("00","br.gov.bcb.pix")+f("01","+5511972369419"))+f("52","0000")+f("53","986");
+  if(amount>0)p+=f("54",amount.toFixed(2));
+  p+=f("58","BR")+f("59","J&S Pear Tech")+f("60","TRES LAGOAS")+f("62",f("05","***"))+"6304";
+  return p+crc16(p);
+}
+$("pixbtn").onclick=function(){
+  var code=payload(num($("pagar").value));
+  $("code").value=code;$("pixbox").style.display="flex";$("qr").innerHTML="";
+  try{new QRCode($("qr"),{text:code,width:180,height:180,correctLevel:QRCode.CorrectLevel.M})}catch(e){$("qr").textContent="QR indisponível"}
+  copy(code);
+};
+function copy(t){
+  var ok=function(){$("cpmsg").textContent="Código PIX copiado! Cole no app do banco (PIX → Copia e Cola)."};
+  var fb=function(){var a=$("code");a.focus();a.select();try{document.execCommand("copy");ok()}catch(e){$("cpmsg").textContent="Selecione e copie o código acima manualmente."}};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+}
+$("cp").onclick=function(){copy($("code").value)};
+$("print").onclick=function(){window.print()};
+
+var pads={};
+[1,2].forEach(function(n){
+  var cv=$("c"+n),ctx,drawing=false,dirty=false;
+  function size(){var r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;cv.width=r.width*d;cv.height=r.height*d;ctx=cv.getContext("2d");ctx.scale(d,d);ctx.lineWidth=2.2;ctx.lineCap="round";ctx.strokeStyle="#0a1a33";dirty=false}
+  size();
+  function pt(e){var r=cv.getBoundingClientRect();return[e.clientX-r.left,e.clientY-r.top]}
+  cv.addEventListener("pointerdown",function(e){drawing=true;cv.setPointerCapture(e.pointerId);var p=pt(e);ctx.beginPath();ctx.moveTo(p[0],p[1])});
+  cv.addEventListener("pointermove",function(e){if(!drawing)return;var p=pt(e);ctx.lineTo(p[0],p[1]);ctx.stroke();dirty=true});
+  ["pointerup","pointercancel"].forEach(function(t){cv.addEventListener(t,function(){drawing=false})});
+  pads[n]={clear:function(){ctx.clearRect(0,0,cv.width,cv.height);dirty=false;$("l"+n).textContent=""},isEmpty:function(){return!dirty},data:function(){return cv.toDataURL("image/png")}};
+});
+document.querySelectorAll("[data-clear]").forEach(function(b){b.onclick=function(){pads[b.dataset.clear].clear()}});
+function hex(buf){return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,"0")}).join("")}
+document.querySelectorAll("[data-sign]").forEach(function(b){b.onclick=async function(){
+  var n=b.dataset.sign,nome=$("n"+n).value.trim();
+  if(!nome){alert("Informe o nome do signatário.");return}
+  if(pads[n].isEmpty()){alert("Desenhe a assinatura no quadro.");return}
+  var ids=["cnpj","cnome","cdoc","ctel","cend","serv","desc","prazo","valor","cond","ent","venc","saldo","entrega","rod","obs"];
+  var dados=ids.map(function(i){return $(i).value}).join("|")+"|"+nome+"|"+pads[n].data();
+  var ts=new Date().toLocaleString("pt-BR");
+  var h="indisponível";
+  try{h=hex(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(dados+ts)))}catch(e){}
+  $("l"+n).textContent="Assinado eletronicamente por "+nome+" em "+ts+". Hash SHA-256: "+h;
+}});
+})();
+</script>
+</body>
+</html>
