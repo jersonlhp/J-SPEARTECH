@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /J-SPEARTECH/
+
+Sitemap: https://jersonlhp.github.io/J-SPEARTECH/sitemap.xml
